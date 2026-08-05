@@ -22,44 +22,45 @@ jobs:
 
       - name: Download GitHub Stats
         run: |
-          curl -sSfL \
+          curl -sSfL --retry 3 \
             -H "User-Agent: GitHub Actions" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://github-readme-stats.vercel.app/api?username=ARUNMANIKANDAN-C&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" \
-            -o assets/stats.svg
+            -o assets/stats_temp.svg && mv assets/stats_temp.svg assets/stats.svg || echo "Failed to fetch stats, keeping existing file."
 
       - name: Download Top Languages
         run: |
-          curl -sSfL \
+          curl -sSfL --retry 3 \
             -H "User-Agent: GitHub Actions" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://github-readme-stats.vercel.app/api/top-langs/?username=ARUNMANIKANDAN-C&layout=compact&theme=tokyonight&hide_border=true" \
-            -o assets/languages.svg
+            -o assets/languages_temp.svg && mv assets/languages_temp.svg assets/languages.svg || echo "Failed to fetch top langs, keeping existing file."
 
       - name: Download GitHub Streak
         run: |
-          curl -sSfL \
+          curl -sSfL --retry 3 \
             -H "User-Agent: GitHub Actions" \
             "https://streak-stats.demolab.com?user=ARUNMANIKANDAN-C&theme=tokyonight&hide_border=true" \
-            -o assets/streak.svg
+            -o assets/streak_temp.svg && mv assets/streak_temp.svg assets/streak.svg || echo "Failed to fetch streak, keeping existing file."
 
       - name: Download Capsule Header
         run: |
-          curl -sSfL \
+          curl -sSfL --retry 3 \
             -H "User-Agent: GitHub Actions" \
             "https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=220&section=header&text=ARUNMANIKANDAN%20C&fontSize=52&fontColor=ffffff&animation=fadeIn" \
-            -o assets/header.svg
+            -o assets/header_temp.svg && mv assets/header_temp.svg assets/header.svg || echo "Failed to fetch header, keeping existing file."
 
       - name: Download Skill Icons
         run: |
-          curl -sSfL \
+          curl -sSfL --retry 3 \
             -H "User-Agent: GitHub Actions" \
             "https://skillicons.dev/icons?i=python,cpp,java,tensorflow,pytorch,opencv,docker,git,linux,fastapi,supabase&perline=11" \
-            -o assets/skills.svg
+            -o assets/skills_temp.svg && mv assets/skills_temp.svg assets/skills.svg || echo "Failed to fetch skills, keeping existing file."
 
       - name: Verify SVG Files
         run: |
           for file in assets/*.svg; do
+            [ -e "$file" ] || continue
             echo "Checking $file"
             grep -q "<svg" "$file" || (echo "Invalid SVG content in: $file" && exit 1)
           done
