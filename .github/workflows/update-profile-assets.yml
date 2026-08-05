@@ -22,35 +22,37 @@ jobs:
 
       - name: Download GitHub Stats
         run: |
-          curl -L \
+          curl -sSfL \
             -H "User-Agent: GitHub Actions" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://github-readme-stats.vercel.app/api?username=ARUNMANIKANDAN-C&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" \
             -o assets/stats.svg
 
       - name: Download Top Languages
         run: |
-          curl -L \
+          curl -sSfL \
             -H "User-Agent: GitHub Actions" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://github-readme-stats.vercel.app/api/top-langs/?username=ARUNMANIKANDAN-C&layout=compact&theme=tokyonight&hide_border=true" \
             -o assets/languages.svg
 
       - name: Download GitHub Streak
         run: |
-          curl -L \
+          curl -sSfL \
             -H "User-Agent: GitHub Actions" \
             "https://streak-stats.demolab.com?user=ARUNMANIKANDAN-C&theme=tokyonight&hide_border=true" \
             -o assets/streak.svg
 
       - name: Download Capsule Header
         run: |
-          curl -L \
+          curl -sSfL \
             -H "User-Agent: GitHub Actions" \
             "https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=220&section=header&text=ARUNMANIKANDAN%20C&fontSize=52&fontColor=ffffff&animation=fadeIn" \
             -o assets/header.svg
 
       - name: Download Skill Icons
         run: |
-          curl -L \
+          curl -sSfL \
             -H "User-Agent: GitHub Actions" \
             "https://skillicons.dev/icons?i=python,cpp,java,tensorflow,pytorch,opencv,docker,git,linux,fastapi,supabase&perline=11" \
             -o assets/skills.svg
@@ -59,11 +61,11 @@ jobs:
         run: |
           for file in assets/*.svg; do
             echo "Checking $file"
-            grep -q "<svg" "$file" || (echo "Invalid SVG: $file" && exit 1)
+            grep -q "<svg" "$file" || (echo "Invalid SVG content in: $file" && exit 1)
           done
 
       - name: Commit Updated Assets
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(profile): update generated assets"
-          file_pattern: assets/*.svg
+          file_pattern: "assets/*.svg"
