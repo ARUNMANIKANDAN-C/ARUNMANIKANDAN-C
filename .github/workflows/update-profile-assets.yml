@@ -1,11 +1,10 @@
 name: Update Profile Assets
 
 on:
-  schedule:
-    # Every day at 00:00 UTC
-    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
   workflow_dispatch:
-
 permissions:
   contents: write
 
