@@ -200,11 +200,16 @@ I'm open to opportunities and collaborations in **software engineering, AI/ML, b
 ### Build · Learn · Solve
 </div>
 
-
-<picture>
-  <source media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake-dark.svg">
-
-  <source media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake.svg">
-</picture>
+<p align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake-dark.svg">
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake.svg">
+    <img
+      alt="GitHub contribution grid snake animation"
+      src="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake.svg">
+  </picture>
+</p>
