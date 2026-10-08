@@ -198,5 +198,13 @@ I'm open to opportunities and collaborations in **software engineering, AI/ML, b
 <div align="center">
 
 ### Build · Learn · Solve
-
 </div>
+
+
+<picture>
+  <source media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake-dark.svg">
+
+  <source media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/ARUNMANIKANDAN-C/ARUNMANIKANDAN-C/output/github-contribution-grid-snake.svg">
+</picture>
